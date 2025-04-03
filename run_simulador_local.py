@@ -1,22 +1,13 @@
-
 import papermill as pm
-import datetime
-import os
 
-# Crear carpeta de salida si no existe
-output_dir = "output"
-os.makedirs(output_dir, exist_ok=True)
+input_path = "simulador_resultado_VALIDADO_FINAL_con_api.ipynb"
+output_path = "output/simulador_resultado_EJECUTADO.ipynb"
 
-# Nombre dinámico con fecha/hora
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-output_nb = f"{output_dir}/simulador_resultado_{timestamp}.ipynb"
-
-# Ejecutar notebook y guardar copia ejecutada
+# Ejecutar el notebook
 pm.execute_notebook(
-    'simulador_mgc1_optimizacion_chatgpt.ipynb',
-    output_nb,
-    kernel_name='python3',
-    parameters=dict()
+    input_path,
+    output_path,
+    parameters={}
 )
 
-print(f"✅ Notebook ejecutado correctamente y guardado en: {output_nb}")
+print("✅ Simulación completada. Resultado guardado en:", output_path)
